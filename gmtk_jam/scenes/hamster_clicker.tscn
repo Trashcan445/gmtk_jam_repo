@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2sfk3xjnfbfl"]
+[gd_scene load_steps=12 format=3 uid="uid://2sfk3xjnfbfl"]
 
 [ext_resource type="Script" uid="uid://1rlitx3kfnc0" path="res://scripts/hamster_wheel.gd" id="1_70i32"]
 [ext_resource type="Texture2D" uid="uid://c3np3xbbtnosg" path="res://assets/art/wheel.png" id="1_wat2s"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dt8th7o3u2bfi" path="res://assets/art/wheelBar.png" id="3_qmgou"]
 [ext_resource type="Script" uid="uid://da6qw3ijsx8gs" path="res://scenes/display_string_in_label.gd" id="5_qmgou"]
 [ext_resource type="PackedScene" uid="uid://bmbbycprlxm23" path="res://scenes/shop.tscn" id="6_aeqvs"]
+[ext_resource type="Texture2D" uid="uid://chmykggsovn5k" path="res://assets/art/brooke-balentine-tLI5KpfTC2s-unsplash.jpg" id="7_w8d8m"]
+[ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
 
 [sub_resource type="Animation" id="Animation_ww34r"]
 length = 0.001
@@ -97,6 +99,7 @@ _data = {
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Hamster_Wheel" type="Node2D" parent="." node_paths=PackedStringArray("animplayer")]
+position = Vector2(-234.79, 0)
 script = ExtResource("1_70i32")
 animplayer = NodePath("AnimationPlayer")
 loopAnimationName = "hamster_loop"
@@ -132,10 +135,10 @@ libraries = {
 speed_scale = 0.2
 
 [node name="Button" type="Button" parent="."]
-offset_left = -539.0
-offset_top = -179.0
-offset_right = -263.0
-offset_bottom = -61.0
+offset_left = 1.54
+offset_top = 85.12
+offset_right = 277.54
+offset_bottom = 203.12
 text = "increase speed"
 
 [node name="Label" type="Label" parent="Button"]
@@ -150,6 +153,20 @@ script = ExtResource("5_qmgou")
 [node name="Shop" parent="." node_paths=PackedStringArray("hamster_wheel") instance=ExtResource("6_aeqvs")]
 position = Vector2(449, -84)
 hamster_wheel = NodePath("../Hamster_Wheel")
+
+[node name="BG_art" type="Node" parent="."]
+
+[node name="Brooke-balentine-tLi5KpfTc2s-unsplash" type="Sprite2D" parent="BG_art"]
+z_index = -2
+position = Vector2(-12, 173)
+scale = Vector2(0.380208, 0.380208)
+texture = ExtResource("7_w8d8m")
+
+[node name="LabTable" type="Sprite2D" parent="BG_art"]
+z_index = -1
+position = Vector2(-17, 144)
+scale = Vector2(1.54479, 1)
+texture = ExtResource("8_jafe7")
 
 [connection signal="loops_changed" from="Hamster_Wheel" to="Button/Label" method="_on_new_float"]
 [connection signal="loops_changed" from="Hamster_Wheel" to="Shop" method="loops_changed"]
