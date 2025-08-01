@@ -7,8 +7,6 @@ extends Node2D
 @export var upgradeDisplays : Array[UpgradeDisplay]
 
 func _ready() -> void:
-	hamster_wheel = $"../Hamster_Wheel"
-	
 	# init all upgrade nodes
 	for i in upgradeDisplays.size():
 		upgradeDisplays[i].init_display(upgrades[i])
