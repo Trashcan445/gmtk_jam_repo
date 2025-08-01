@@ -23,11 +23,12 @@ func loops_changed(new_loops : float):
 func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 	hamster_wheel.loops -= upgrade_purchase.cost
 	upgrade_purchase.cost += upgrade_purchase.cost_increase
+	upgrade_purchase.cost_increase = upgrade_purchase.cost_increase * 1.2
 	
 	if upgrade_purchase.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
 		hamster_wheel.loopsPerSecond += upgrade_purchase.increase
 	else:
-		hamster_wheel.loopsPerSecondMlp += upgrade_purchase.increase
+		hamster_wheel.loopsPerSecond *= upgrade_purchase.increase
 		
 	# unlock new upgrades from lps
 	init_all()
@@ -37,4 +38,4 @@ func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 
 func init_all():
 	for i in upgradeDisplays.size():
-		upgradeDisplays[i].init_display(upgrades[i], hamster_wheel.trueLPS >= upgrades[i].lps_to_unlock)
+		upgradeDisplays[i].init_display(upgrades[i], hamster_wheel.loopsPerSecond >= upgrades[i].lps_to_unlock)

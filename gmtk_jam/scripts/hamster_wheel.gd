@@ -14,16 +14,8 @@ extends Node
 @export var loopsPerSecond : float = 1.0:
 	set(value):
 		loopsPerSecond = value
-		lps_changed.emit(trueLPS)
+		lps_changed.emit(loopsPerSecond)
 		
-@export var loopsPerSecondMlp : float = 1.0:
-	set(value):
-		loopsPerSecondMlp = value
-		lps_changed.emit(trueLPS)
-		
-var trueLPS : float:
-	get:
-		return loopsPerSecond * loopsPerSecondMlp
 
 signal loops_changed(new_loops : float)
 signal lps_changed(new_lps : float)
@@ -33,13 +25,13 @@ signal lps_changed(new_lps : float)
 func _ready() -> void:
 	animplayer.play(loopAnimationName)
 	animplayer.speed_scale = 0
-	lps_changed.emit(trueLPS)
+	lps_changed.emit(loopsPerSecond)
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	loops += delta * trueLPS
+	loops += delta * loopsPerSecond
 
 	var moduloLoops = fposmod(loops, 1.0) # 'Loops' loops between 0 and 1
 	animplayer.seek(moduloLoops)
