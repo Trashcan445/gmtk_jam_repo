@@ -147,9 +147,8 @@ offset_bottom = 329.0
 text = "I SAY HOW MUCH LOOPS"
 script = ExtResource("5_qmgou")
 
-[node name="Shop" parent="." node_paths=PackedStringArray("hamster_wheel") instance=ExtResource("6_aeqvs")]
+[node name="Shop" parent="." instance=ExtResource("6_aeqvs")]
 position = Vector2(449, -84)
-hamster_wheel = NodePath("../Hamster_Wheel")
 
 [connection signal="loops_changed" from="Hamster_Wheel" to="Button/Label" method="_on_new_float"]
 [connection signal="loops_changed" from="Hamster_Wheel" to="Shop" method="loops_changed"]
