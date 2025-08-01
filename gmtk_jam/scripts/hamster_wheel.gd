@@ -11,22 +11,36 @@ extends Node
 		loops = value
 		loops_changed.emit(loops)
 		
-@export var loopsPerSecond : float = 1.0
-@export var loopsPerSecondMlp : float = 1.0
+@export var loopsPerSecond : float = 1.0:
+	set(value):
+		loopsPerSecond = value
+		lps_changed.emit(trueLPS)
+		
+@export var loopsPerSecondMlp : float = 1.0:
+	set(value):
+		loopsPerSecondMlp = value
+		lps_changed.emit(trueLPS)
+		
+var trueLPS : float:
+	get:
+		return loopsPerSecond * loopsPerSecondMlp
 
 signal loops_changed(new_loops : float)
+signal lps_changed(new_lps : float)
 # END variables
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animplayer.play(loopAnimationName)
 	animplayer.speed_scale = 0
+	lps_changed.emit(trueLPS)
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	loops += delta * loopsPerSecond * loopsPerSecondMlp
+	loops += delta * trueLPS
+
 	var moduloLoops = fposmod(loops, 1.0) # 'Loops' loops between 0 and 1
 	animplayer.seek(moduloLoops)
 

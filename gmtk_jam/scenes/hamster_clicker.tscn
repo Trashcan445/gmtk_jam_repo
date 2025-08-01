@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2sfk3xjnfbfl"]
+[gd_scene load_steps=16 format=3 uid="uid://2sfk3xjnfbfl"]
 
 [ext_resource type="Script" uid="uid://1rlitx3kfnc0" path="res://scripts/hamster_wheel.gd" id="1_70i32"]
 [ext_resource type="Texture2D" uid="uid://c3np3xbbtnosg" path="res://assets/art/wheel.png" id="1_wat2s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dt8th7o3u2bfi" path="res://assets/art/wheelBar.png" id="3_qmgou"]
 [ext_resource type="Script" uid="uid://d4mfuh4tqigep" path="res://scripts/hamster_visual_manager.gd" id="5_pbigs"]
 [ext_resource type="Script" uid="uid://da6qw3ijsx8gs" path="res://scripts/display_string_in_label.gd" id="5_qmgou"]
+[ext_resource type="Script" uid="uid://y5nku40kimi1" path="res://scripts/hamster_visual.gd" id="6_5rqni"]
 [ext_resource type="PackedScene" uid="uid://bmbbycprlxm23" path="res://scenes/shop.tscn" id="6_aeqvs"]
 [ext_resource type="Texture2D" uid="uid://chmykggsovn5k" path="res://assets/art/brooke-balentine-tLI5KpfTC2s-unsplash.jpg" id="7_w8d8m"]
 [ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
@@ -95,7 +96,35 @@ _data = {
 &"hamster_loop": SubResource("Animation_aeqvs")
 }
 
+[sub_resource type="Resource" id="Resource_pbigs"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Hamster2")])
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_5rqni"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([])
+useCustomHamsterColor = true
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
 [node name="hamster_clicker" type="Node2D"]
+
+[node name="BG_art" type="Node" parent="."]
+
+[node name="Brooke-balentine-tLi5KpfTc2s-unsplash" type="Sprite2D" parent="BG_art"]
+z_index = -2
+position = Vector2(-12, 173)
+scale = Vector2(0.380208, 0.380208)
+texture = ExtResource("7_w8d8m")
+
+[node name="LabTable" type="Sprite2D" parent="BG_art"]
+z_index = -1
+position = Vector2(-17, 144)
+scale = Vector2(1.54479, 1)
+texture = ExtResource("8_jafe7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -120,6 +149,12 @@ scale = Vector2(0.872093, 0.872093)
 position = Vector2(6.88, 36.9674)
 scale = Vector2(0.872093, 0.872093)
 
+[node name="Hamster2" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+position = Vector2(-64.7035, 1.31482)
+scale = Vector2(1.0044, 1.11156)
+texture = ExtResource("2_70i32")
+
 [node name="Hamster" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
 texture = ExtResource("2_70i32")
 
@@ -137,34 +172,33 @@ speed_scale = 0.2
 
 [node name="HamsterVisualManager" type="Node2D" parent="Hamster_Wheel" node_paths=PackedStringArray("hamsterSprite")]
 script = ExtResource("5_pbigs")
+visuals = Array[ExtResource("6_5rqni")]([SubResource("Resource_pbigs"), SubResource("Resource_5rqni")])
 hamsterSprite = NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Hamster")
 metadata/_custom_type_script = "uid://d4mfuh4tqigep"
 
-[node name="Shop" parent="." node_paths=PackedStringArray("hamster_wheel") instance=ExtResource("6_aeqvs")]
+[node name="Shop" parent="." node_paths=PackedStringArray("hamster_wheel", "hamster_vis") instance=ExtResource("6_aeqvs")]
 position = Vector2(448, -84)
 hamster_wheel = NodePath("../Hamster_Wheel")
+hamster_vis = NodePath("../Hamster_Wheel/HamsterVisualManager")
 
-[node name="BG_art" type="Node" parent="."]
+[node name="Stats GUI" type="Node2D" parent="."]
+position = Vector2(13, -10)
 
-[node name="Brooke-balentine-tLi5KpfTc2s-unsplash" type="Sprite2D" parent="BG_art"]
-z_index = -2
-position = Vector2(-12, 173)
-scale = Vector2(0.380208, 0.380208)
-texture = ExtResource("7_w8d8m")
+[node name="lps" type="Label" parent="Stats GUI"]
+offset_left = -1.0
+offset_top = 27.0
+offset_right = 301.0
+offset_bottom = 63.0
+text = "uninitialized LPS"
+script = ExtResource("5_qmgou")
+suffix = " LPS"
 
-[node name="LabTable" type="Sprite2D" parent="BG_art"]
-z_index = -1
-position = Vector2(-17, 144)
-scale = Vector2(1.54479, 1)
-texture = ExtResource("8_jafe7")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 13.0
-offset_top = -10.0
-offset_right = 313.0
-offset_bottom = 155.0
-text = "I SAY HOW MUCH LOOPS"
+[node name="loops" type="Label" parent="Stats GUI"]
+offset_right = 302.0
+offset_bottom = 36.0
+text = "uninitialized LOOPS"
 script = ExtResource("5_qmgou")
 
-[connection signal="loops_changed" from="Hamster_Wheel" to="Label" method="_on_new_float"]
 [connection signal="loops_changed" from="Hamster_Wheel" to="Shop" method="loops_changed"]
+[connection signal="loops_changed" from="Hamster_Wheel" to="Stats GUI/loops" method="_on_new_float"]
+[connection signal="lps_changed" from="Hamster_Wheel" to="Stats GUI/lps" method="_on_new_float"]

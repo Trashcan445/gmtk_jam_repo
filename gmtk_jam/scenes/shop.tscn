@@ -9,8 +9,9 @@ script = ExtResource("2_1l46r")
 name = "Running Shoes"
 increase = 0.1
 increase_type = 0
-costs = Array[int]([1])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_2fc2m"]
@@ -18,8 +19,9 @@ script = ExtResource("2_1l46r")
 name = "2 more legs"
 increase = 0.25
 increase_type = 0
-costs = Array[int]([5])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.2
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_8r1wq"]
@@ -27,8 +29,9 @@ script = ExtResource("2_1l46r")
 name = "Bionic Eye"
 increase = 0.5
 increase_type = 0
-costs = Array[int]([25])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_1l46r"]
@@ -36,8 +39,9 @@ script = ExtResource("2_1l46r")
 name = "Hulk Juice"
 increase = 1.0
 increase_type = 0
-costs = Array[int]([150])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_ajxib"]
@@ -45,8 +49,9 @@ script = ExtResource("2_1l46r")
 name = "Butter"
 increase = 0.1
 increase_type = 1
-costs = Array[int]([5])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_y6sft"]
@@ -54,8 +59,9 @@ script = ExtResource("2_1l46r")
 name = "Monster Sipper"
 increase = 0.2
 increase_type = 1
-costs = Array[int]([25])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_m4ofw"]
@@ -63,8 +69,9 @@ script = ExtResource("2_1l46r")
 name = "Flame Decals"
 increase = 0.5
 increase_type = 1
-costs = Array[int]([50])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_heatd"]
@@ -72,8 +79,9 @@ script = ExtResource("2_1l46r")
 name = "Diamond Wheel"
 increase = 1.0
 increase_type = 1
-costs = Array[int]([75])
-currentLevel = 0
+cost = 1
+cost_increase = 1
+lps_to_unlock = 0.0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [node name="Shop" type="Node2D" node_paths=PackedStringArray("upgradeDisplays")]

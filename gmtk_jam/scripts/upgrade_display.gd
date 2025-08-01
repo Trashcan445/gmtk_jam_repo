@@ -1,5 +1,5 @@
 class_name UpgradeDisplay
-extends Node
+extends Node2D
 
 @export var nameDisplay : Label
 @export var descDisplay : Label
@@ -9,7 +9,7 @@ signal purchased(upgrade : Upgrade)
 var info : Upgrade
 
 
-func init_display(upgradeInfo : Upgrade) -> void:
+func init_display(upgradeInfo : Upgrade, _visible : bool = true) -> void:
 	info = upgradeInfo
 	nameDisplay.text = info.name
 	
@@ -24,6 +24,8 @@ func init_display(upgradeInfo : Upgrade) -> void:
 		levelDisplay.text = "Lv. " + str(info.currentLevel)
 	
 	button.text = str(info.cost)
+	
+	visible = _visible
 	
 func refresh_display(loops : float) -> void:
 	button.disabled = loops < info.cost
