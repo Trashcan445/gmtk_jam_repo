@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmbbycprlxm23"]
+[gd_scene load_steps=12 format=3 uid="uid://bmbbycprlxm23"]
 
-[ext_resource type="Script" uid="uid://ccsfla2fb7n0c" path="res://scenes/shop.gd" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://ccsfla2fb7n0c" path="res://scripts/shop.gd" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://dp7ti5a83t8p8" path="res://scripts/upgrade_hamster.gd" id="2_1l46r"]
 [ext_resource type="PackedScene" uid="uid://bbo13ptt3ymk1" path="res://scenes/upgrade_node.tscn" id="2_xfvoa"]
 
 [sub_resource type="Resource" id="Resource_032fp"]
 script = ExtResource("2_1l46r")
 name = "Running Shoes"
-lpsIncrease = 0.1
+increase = 0.1
+increase_type = 0
 costs = Array[int]([1])
 currentLevel = 0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
@@ -15,37 +16,76 @@ metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 [sub_resource type="Resource" id="Resource_2fc2m"]
 script = ExtResource("2_1l46r")
 name = "2 more legs"
-lpsIncrease = 0.2
-costs = Array[int]([25])
+increase = 0.25
+increase_type = 0
+costs = Array[int]([5])
 currentLevel = 0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_8r1wq"]
 script = ExtResource("2_1l46r")
 name = "Bionic Eye"
-lpsIncrease = 0.5
-costs = Array[int]([100])
+increase = 0.5
+increase_type = 0
+costs = Array[int]([25])
 currentLevel = 0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_1l46r"]
 script = ExtResource("2_1l46r")
 name = "Hulk Juice"
-lpsIncrease = 1.0
+increase = 1.0
+increase_type = 0
 costs = Array[int]([150])
+currentLevel = 0
+metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
+
+[sub_resource type="Resource" id="Resource_ajxib"]
+script = ExtResource("2_1l46r")
+name = "Butter"
+increase = 0.1
+increase_type = 1
+costs = Array[int]([5])
+currentLevel = 0
+metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
+
+[sub_resource type="Resource" id="Resource_y6sft"]
+script = ExtResource("2_1l46r")
+name = "Monster Sipper"
+increase = 0.2
+increase_type = 1
+costs = Array[int]([25])
+currentLevel = 0
+metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
+
+[sub_resource type="Resource" id="Resource_m4ofw"]
+script = ExtResource("2_1l46r")
+name = "Flame Decals"
+increase = 0.5
+increase_type = 1
+costs = Array[int]([50])
+currentLevel = 0
+metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
+
+[sub_resource type="Resource" id="Resource_heatd"]
+script = ExtResource("2_1l46r")
+name = "Diamond Wheel"
+increase = 1.0
+increase_type = 1
+costs = Array[int]([75])
 currentLevel = 0
 metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [node name="Shop" type="Node2D" node_paths=PackedStringArray("upgradeDisplays")]
 script = ExtResource("1_lx5au")
-upgrades = Array[ExtResource("2_1l46r")]([SubResource("Resource_032fp"), SubResource("Resource_2fc2m"), SubResource("Resource_8r1wq"), SubResource("Resource_1l46r")])
-upgradeDisplays = [NodePath("Hamster Upgrades/Upgrade Node"), NodePath("Hamster Upgrades/Upgrade Node2"), NodePath("Hamster Upgrades/Upgrade Node3"), NodePath("Hamster Upgrades/Upgrade Node4")]
+upgrades = Array[ExtResource("2_1l46r")]([SubResource("Resource_032fp"), SubResource("Resource_2fc2m"), SubResource("Resource_8r1wq"), SubResource("Resource_1l46r"), SubResource("Resource_ajxib"), SubResource("Resource_y6sft"), SubResource("Resource_m4ofw"), SubResource("Resource_heatd")])
+upgradeDisplays = [NodePath("Hamster Upgrades/Upgrade Node"), NodePath("Hamster Upgrades/Upgrade Node2"), NodePath("Hamster Upgrades/Upgrade Node3"), NodePath("Hamster Upgrades/Upgrade Node4"), NodePath("Wheel Upgrades/Upgrade Node"), NodePath("Wheel Upgrades/Upgrade Node2"), NodePath("Wheel Upgrades/Upgrade Node3"), NodePath("Wheel Upgrades/Upgrade Node4")]
 
 [node name="Hamster Upgrades" type="Panel" parent="."]
 offset_left = -158.0
 offset_top = -119.0
-offset_right = 90.0
-offset_bottom = 123.0
+offset_right = 88.0
+offset_bottom = 62.0
 
 [node name="Upgrade Node" parent="Hamster Upgrades" instance=ExtResource("2_xfvoa")]
 position = Vector2(158, 28)
@@ -59,7 +99,29 @@ position = Vector2(158, 108)
 [node name="Upgrade Node4" parent="Hamster Upgrades" instance=ExtResource("2_xfvoa")]
 position = Vector2(158, 148)
 
+[node name="Wheel Upgrades" type="Panel" parent="."]
+offset_left = -158.0
+offset_top = 72.0
+offset_right = 88.0
+offset_bottom = 253.0
+
+[node name="Upgrade Node" parent="Wheel Upgrades" instance=ExtResource("2_xfvoa")]
+position = Vector2(158, 28)
+
+[node name="Upgrade Node2" parent="Wheel Upgrades" instance=ExtResource("2_xfvoa")]
+position = Vector2(158, 68)
+
+[node name="Upgrade Node3" parent="Wheel Upgrades" instance=ExtResource("2_xfvoa")]
+position = Vector2(158, 108)
+
+[node name="Upgrade Node4" parent="Wheel Upgrades" instance=ExtResource("2_xfvoa")]
+position = Vector2(158, 148)
+
 [connection signal="purchased" from="Hamster Upgrades/Upgrade Node" to="." method="_on_upgrade_node_purchased"]
 [connection signal="purchased" from="Hamster Upgrades/Upgrade Node2" to="." method="_on_upgrade_node_purchased"]
 [connection signal="purchased" from="Hamster Upgrades/Upgrade Node3" to="." method="_on_upgrade_node_purchased"]
 [connection signal="purchased" from="Hamster Upgrades/Upgrade Node4" to="." method="_on_upgrade_node_purchased"]
+[connection signal="purchased" from="Wheel Upgrades/Upgrade Node" to="." method="_on_upgrade_node_purchased"]
+[connection signal="purchased" from="Wheel Upgrades/Upgrade Node2" to="." method="_on_upgrade_node_purchased"]
+[connection signal="purchased" from="Wheel Upgrades/Upgrade Node3" to="." method="_on_upgrade_node_purchased"]
+[connection signal="purchased" from="Wheel Upgrades/Upgrade Node4" to="." method="_on_upgrade_node_purchased"]

@@ -22,4 +22,8 @@ func loops_changed(new_loops : float):
 # the buttons themselves will increase their level
 func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 	hamster_wheel.loops -= upgrade_purchase.cost
-	hamster_wheel.loopsPerSecond += upgrade_purchase.lpsIncrease
+	
+	if upgrade_purchase.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
+		hamster_wheel.loopsPerSecond += upgrade_purchase.increase
+	else:
+		hamster_wheel.loopsPerSecondMlp += upgrade_purchase.increase

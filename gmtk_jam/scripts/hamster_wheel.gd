@@ -12,6 +12,7 @@ extends Node
 		loops_changed.emit(loops)
 		
 @export var loopsPerSecond : float = 1.0
+@export var loopsPerSecondMlp : float = 1.0
 
 signal loops_changed(new_loops : float)
 # END variables
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	loops += delta * loopsPerSecond
+	loops += delta * loopsPerSecond * loopsPerSecondMlp
 	var moduloLoops = fposmod(loops, 1.0) # 'Loops' loops between 0 and 1
 	animplayer.seek(moduloLoops)
 
