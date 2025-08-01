@@ -1,3 +1,5 @@
+# HAMSTER WHEEL GD
+class_name HamsterWheel
 extends Node
 
 # Variables

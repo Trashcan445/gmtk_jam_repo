@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbo13ptt3ymk1"]
+
+[ext_resource type="Script" uid="uid://bet6hj5dq3vlx" path="res://scripts/upgrade_display.gd" id="1_i2vvs"]
+
+[node name="Upgrade Node" type="Node2D" node_paths=PackedStringArray("nameDisplay", "descDisplay", "levelDisplay", "button")]
+script = ExtResource("1_i2vvs")
+nameDisplay = NodePath("name")
+descDisplay = NodePath("desc")
+levelDisplay = NodePath("lvl")
+button = NodePath("Purchase")
+
+[node name="Purchase" type="Button" parent="."]
+offset_left = -24.0
+offset_top = -17.0
+offset_right = 223.0
+offset_bottom = 68.0
+scale = Vector2(0.383953, 0.383953)
+theme_override_font_sizes/font_size = 56
+text = "COST
+"
+
+[node name="name" type="Label" parent="."]
+offset_left = -143.0
+offset_top = -18.0
+offset_right = 435.0
+offset_bottom = 93.0
+scale = Vector2(0.162558, 0.162558)
+theme_override_font_sizes/font_size = 81
+text = "NAME"
+
+[node name="desc" type="Label" parent="."]
+offset_left = -142.0
+offset_top = -2.0
+offset_right = 157.0
+offset_bottom = 89.0
+scale = Vector2(0.162558, 0.162558)
+theme_override_font_sizes/font_size = 66
+text = "+0.10 LPS"
+
+[node name="lvl" type="Label" parent="."]
+offset_left = -58.0
+offset_top = -1.0
+offset_right = 241.0
+offset_bottom = 90.0
+scale = Vector2(0.162558, 0.162558)
+theme_override_font_sizes/font_size = 66
+text = "1"
+
+[connection signal="pressed" from="Purchase" to="." method="purchase_upgrade"]
