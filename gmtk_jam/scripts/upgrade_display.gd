@@ -12,11 +12,6 @@ var info : Upgrade
 func init_display(upgradeInfo : Upgrade, _visible : bool = true) -> void:
 	info = upgradeInfo
 	nameDisplay.text = info.name
-	
-	if upgradeInfo.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
-		descDisplay.text = "+" + String.num(info.increase, 2) + " LPS"
-	else:
-		descDisplay.text = "+" + str(int(info.increase*100)) + "% LPS"
 		
 	if info.currentLevel==0:
 		levelDisplay.text = "NEW "
@@ -32,5 +27,10 @@ func refresh_display(loops : float) -> void:
 
 func purchase_upgrade() -> void:
 	purchased.emit(info) # This tells shop to subtract the cost from loops
-	info.currentLevel+=1
 	init_display(info)
+	
+func lps_changed(lps : float) -> void:
+	if info.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
+		descDisplay.text = "+" + String.num(info.increase, 2) + " LPS" + " (Total: " + String.num(lps, 2) + ")"
+	else:
+		descDisplay.text = "+" + str(int(info.increase*100)) + "% LPS"

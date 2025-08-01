@@ -5,6 +5,7 @@ extends Node
 # Variables
 @export var animplayer : AnimationPlayer
 @export var loopAnimationName : String
+@export var loops_visual : float = 0.0
 
 @export var loops : float = 0.0:
 	set(value):
@@ -32,10 +33,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	loops += delta * loopsPerSecond
+	loops_visual += delta * loopsPerSecond
 
-	var moduloLoops = fposmod(loops, 1.0) # 'Loops' loops between 0 and 1
+	var moduloLoops = fposmod(loops_visual, 1.0) # 'Loops' loops between 0 and 1
 	animplayer.seek(moduloLoops)
 
 
 func _on_button_pressed() -> void:
 	loopsPerSecond+=0.1
+
+
+func _debug_add1() -> void:
+	loops += 100

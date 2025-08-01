@@ -92,7 +92,7 @@ upgradeDisplays = [NodePath("Hamster Upgrades/Upgrade Node"), NodePath("Hamster 
 [node name="Hamster Upgrades" type="Panel" parent="."]
 offset_left = -158.0
 offset_top = -119.0
-offset_right = 88.0
+offset_right = 149.0
 offset_bottom = 62.0
 
 [node name="Upgrade Node" parent="Hamster Upgrades" instance=ExtResource("2_xfvoa")]
@@ -110,7 +110,7 @@ position = Vector2(158, 148)
 [node name="Wheel Upgrades" type="Panel" parent="."]
 offset_left = -158.0
 offset_top = 72.0
-offset_right = 88.0
+offset_right = 148.0
 offset_bottom = 253.0
 
 [node name="Upgrade Node" parent="Wheel Upgrades" instance=ExtResource("2_xfvoa")]

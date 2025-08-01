@@ -177,7 +177,7 @@ hamsterSprite = NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Hamster")
 metadata/_custom_type_script = "uid://d4mfuh4tqigep"
 
 [node name="Shop" parent="." node_paths=PackedStringArray("hamster_wheel", "hamster_vis") instance=ExtResource("6_aeqvs")]
-position = Vector2(448, -84)
+position = Vector2(357, -84)
 hamster_wheel = NodePath("../Hamster_Wheel")
 hamster_vis = NodePath("../Hamster_Wheel/HamsterVisualManager")
 
@@ -199,6 +199,14 @@ offset_bottom = 36.0
 text = "uninitialized LOOPS"
 script = ExtResource("5_qmgou")
 
+[node name="Button" type="Button" parent="."]
+offset_left = 75.0
+offset_top = 233.0
+offset_right = 437.0
+offset_bottom = 395.0
+text = "add 100 loops"
+
 [connection signal="loops_changed" from="Hamster_Wheel" to="Shop" method="loops_changed"]
 [connection signal="loops_changed" from="Hamster_Wheel" to="Stats GUI/loops" method="_on_new_float"]
 [connection signal="lps_changed" from="Hamster_Wheel" to="Stats GUI/lps" method="_on_new_float"]
+[connection signal="pressed" from="Button" to="Hamster_Wheel" method="_debug_add1"]

@@ -4,12 +4,15 @@ extends Node2D
 
 @export var hamster_wheel : HamsterWheel
 @export var hamster_vis : HamsterVisualManager
+@export var baseLPS : float = 0.1
 @export var upgrades : Array[Upgrade]
 @export var upgradeDisplays : Array[UpgradeDisplay]
 
 func _ready() -> void:
 	# init all upgrade nodes
 	init_all()
+	
+	calc_lps()
 		
 	loops_changed(hamster_wheel.loops)
 
@@ -24,11 +27,9 @@ func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 	hamster_wheel.loops -= upgrade_purchase.cost
 	upgrade_purchase.cost += upgrade_purchase.cost_increase
 	upgrade_purchase.cost_increase = upgrade_purchase.cost_increase * 1.2
+	upgrade_purchase.currentLevel += 1
 	
-	if upgrade_purchase.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
-		hamster_wheel.loopsPerSecond += upgrade_purchase.increase
-	else:
-		hamster_wheel.loopsPerSecond *= upgrade_purchase.increase
+	calc_lps()
 		
 	# unlock new upgrades from lps
 	init_all()
@@ -38,4 +39,27 @@ func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 
 func init_all():
 	for i in upgradeDisplays.size():
-		upgradeDisplays[i].init_display(upgrades[i], hamster_wheel.loopsPerSecond >= upgrades[i].lps_to_unlock)
+		upgradeDisplays[i].init_display(upgrades[i], hamster_wheel.loopsPerSecond >= upgrades[i].lps_to_unlock-0.0001)
+
+func calc_lps():
+	var lpsMlp : float = 1.0
+	var totalLPS : float = baseLPS
+	
+	for i in range(upgrades.size()):
+		var upgrade = upgrades[i]
+		if upgrade.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second_Mult:
+			if upgrade.currentLevel > 0:
+				lpsMlp *= pow(upgrade.increase, upgrade.currentLevel)
+			upgradeDisplays[i].lps_changed(0)
+				
+	for i in range(upgrades.size()):
+		var upgrade = upgrades[i]
+		if upgrade.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
+			if upgrade.currentLevel > 0:
+				var lpsFromThisUpgrade = upgrade.increase * lpsMlp * upgrade.currentLevel
+				totalLPS += lpsFromThisUpgrade
+				upgradeDisplays[i].lps_changed(lpsFromThisUpgrade)
+			else:
+				upgradeDisplays[i].lps_changed(0)
+			
+	hamster_wheel.loopsPerSecond = totalLPS

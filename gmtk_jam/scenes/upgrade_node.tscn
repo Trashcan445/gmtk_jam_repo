@@ -10,9 +10,9 @@ levelDisplay = NodePath("lvl")
 button = NodePath("Purchase")
 
 [node name="Purchase" type="Button" parent="."]
-offset_left = -24.0
+offset_left = 46.0
 offset_top = -17.0
-offset_right = 223.0
+offset_right = 293.0
 offset_bottom = 68.0
 scale = Vector2(0.383953, 0.383953)
 theme_override_font_sizes/font_size = 56
@@ -38,9 +38,9 @@ theme_override_font_sizes/font_size = 66
 text = "+0.10 LPS"
 
 [node name="lvl" type="Label" parent="."]
-offset_left = -58.0
+offset_left = -4.0
 offset_top = -1.0
-offset_right = 241.0
+offset_right = 295.0
 offset_bottom = 90.0
 scale = Vector2(0.162558, 0.162558)
 theme_override_font_sizes/font_size = 66
