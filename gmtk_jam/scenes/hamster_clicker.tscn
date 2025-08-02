@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://2sfk3xjnfbfl"]
+[gd_scene load_steps=32 format=3 uid="uid://2sfk3xjnfbfl"]
 
 [ext_resource type="Script" uid="uid://1rlitx3kfnc0" path="res://scripts/hamster_wheel.gd" id="1_70i32"]
 [ext_resource type="Texture2D" uid="uid://c3np3xbbtnosg" path="res://assets/art/wheel.png" id="1_wat2s"]
 [ext_resource type="Texture2D" uid="uid://b1syc4748sy2t" path="res://assets/art/Hamster.png" id="2_70i32"]
 [ext_resource type="Texture2D" uid="uid://dt8th7o3u2bfi" path="res://assets/art/wheelBar.png" id="3_qmgou"]
+[ext_resource type="Texture2D" uid="uid://d2n88iv4gtmgx" path="res://assets/art/tv instructor.png" id="4_2k8ku"]
 [ext_resource type="Texture2D" uid="uid://dydgr4a27gitc" path="res://assets/art/butter.png" id="4_wogv3"]
 [ext_resource type="Script" uid="uid://d4mfuh4tqigep" path="res://scripts/hamster_visual_manager.gd" id="5_pbigs"]
 [ext_resource type="Script" uid="uid://da6qw3ijsx8gs" path="res://scripts/display_string_in_label.gd" id="5_qmgou"]
@@ -13,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://wu2y6rpcc384" path="res://assets/art/running shoe.png" id="7_opkp5"]
 [ext_resource type="Texture2D" uid="uid://chmykggsovn5k" path="res://assets/art/brooke-balentine-tLI5KpfTC2s-unsplash.jpg" id="7_w8d8m"]
 [ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
+[ext_resource type="Texture2D" uid="uid://c0spfmlm2fjxt" path="res://assets/art/jetpack.png" id="10_in4qn"]
 [ext_resource type="Texture2D" uid="uid://bumi7bxvyb6ur" path="res://assets/art/sunglasses.png" id="11_5rqni"]
+[ext_resource type="Texture2D" uid="uid://dnwyrjo8tkh8s" path="res://assets/art/sipper.png" id="12_2k8ku"]
 [ext_resource type="AudioStream" uid="uid://best1my0e8sif" path="res://assets/art/LabBGNoise.wav" id="15_4kayx"]
 [ext_resource type="Script" uid="uid://csyf6kbv3gwyl" path="res://scenes/audio_manager.gd" id="16_bmagv"]
 [ext_resource type="AudioStream" uid="uid://bgej15totnkfl" path="res://assets/art/ButtonPressSFX.wav" id="17_bmagv"]
@@ -126,7 +129,7 @@ metadata/_custom_type_script = "uid://y5nku40kimi1"
 
 [sub_resource type="Resource" id="Resource_4kayx"]
 script = ExtResource("6_5rqni")
-sprites = Array[NodePath]([])
+sprites = Array[NodePath]([NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Jetpack")])
 useCustomHamsterColor = false
 customHamsterColor = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://y5nku40kimi1"
@@ -140,7 +143,21 @@ metadata/_custom_type_script = "uid://y5nku40kimi1"
 
 [sub_resource type="Resource" id="Resource_bmagv"]
 script = ExtResource("6_5rqni")
-sprites = Array[NodePath]([])
+sprites = Array[NodePath]([NodePath("../Sipper")])
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_in4qn"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([NodePath("../TvInstructor")])
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_2k8ku"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([NodePath("../Wheel_AnimatedPivot/diamond wheel")])
 useCustomHamsterColor = false
 customHamsterColor = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://y5nku40kimi1"
@@ -170,16 +187,29 @@ animplayer = NodePath("AnimationPlayer")
 loopAnimationName = "hamster_loop"
 loopsPerSecond = 0.1
 
+[node name="TvInstructor" type="Sprite2D" parent="Hamster_Wheel"]
+visible = false
+position = Vector2(319.79, 125)
+scale = Vector2(0.908545, 0.908545)
+texture = ExtResource("4_2k8ku")
+flip_h = true
+
 [node name="Butter" type="Sprite2D" parent="Hamster_Wheel"]
 visible = false
-position = Vector2(260.79, -141)
-rotation = -0.477292
+position = Vector2(-217.21, -188)
+rotation = -2.52868
 scale = Vector2(1.05469, 0.957031)
 texture = ExtResource("4_wogv3")
 
 [node name="Wheel_AnimatedPivot" type="Node2D" parent="Hamster_Wheel"]
 
 [node name="Wheel" type="Sprite2D" parent="Hamster_Wheel/Wheel_AnimatedPivot"]
+scale = Vector2(1.14667, 1.14667)
+texture = ExtResource("1_wat2s")
+
+[node name="diamond wheel" type="Sprite2D" parent="Hamster_Wheel/Wheel_AnimatedPivot"]
+visible = false
+modulate = Color(0, 0.790077, 0.790077, 1)
 scale = Vector2(1.14667, 1.14667)
 texture = ExtResource("1_wat2s")
 
@@ -232,6 +262,13 @@ rotation = -0.473641
 scale = Vector2(0.22265, 0.22265)
 texture = ExtResource("7_opkp5")
 
+[node name="Jetpack" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+position = Vector2(-102.834, -35.5008)
+rotation = -0.0646076
+scale = Vector2(0.898819, 0.898819)
+texture = ExtResource("10_in4qn")
+
 [node name="Sunglasses" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
 visible = false
 position = Vector2(69.4106, -30.2414)
@@ -252,9 +289,15 @@ libraries = {
 }
 speed_scale = 0.2
 
+[node name="Sipper" type="Sprite2D" parent="Hamster_Wheel"]
+visible = false
+position = Vector2(158.79, -22)
+scale = Vector2(1.28125, 1.28125)
+texture = ExtResource("12_2k8ku")
+
 [node name="HamsterVisualManager" type="Node2D" parent="Hamster_Wheel" node_paths=PackedStringArray("hamsterSprite")]
 script = ExtResource("5_pbigs")
-visuals = Array[ExtResource("6_5rqni")]([SubResource("Resource_pbigs"), SubResource("Resource_5rqni"), SubResource("Resource_wogv3"), SubResource("Resource_4kayx"), SubResource("Resource_eg4t8"), SubResource("Resource_bmagv")])
+visuals = Array[ExtResource("6_5rqni")]([SubResource("Resource_pbigs"), SubResource("Resource_5rqni"), SubResource("Resource_wogv3"), SubResource("Resource_4kayx"), SubResource("Resource_eg4t8"), SubResource("Resource_bmagv"), SubResource("Resource_in4qn"), SubResource("Resource_2k8ku")])
 hamsterSprite = NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Hamster")
 metadata/_custom_type_script = "uid://d4mfuh4tqigep"
 
