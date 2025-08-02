@@ -8,6 +8,8 @@ extends Node2D
 @export var upgrades : Array[Upgrade]
 @export var upgradeDisplays : Array[UpgradeDisplay]
 
+signal button_pressed()
+
 func _ready() -> void:
 	# init all upgrade nodes
 	init_all()
@@ -34,6 +36,7 @@ func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 	calc_lps()
 		
 	init_all()# unlock new upgrades from lps
+	button_pressed.emit()
 
 func init_all():
 	for i in upgradeDisplays.size():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://2sfk3xjnfbfl"]
+[gd_scene load_steps=27 format=3 uid="uid://2sfk3xjnfbfl"]
 
 [ext_resource type="Script" uid="uid://1rlitx3kfnc0" path="res://scripts/hamster_wheel.gd" id="1_70i32"]
 [ext_resource type="Texture2D" uid="uid://c3np3xbbtnosg" path="res://assets/art/wheel.png" id="1_wat2s"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
 [ext_resource type="Texture2D" uid="uid://bumi7bxvyb6ur" path="res://assets/art/sunglasses.png" id="11_5rqni"]
 [ext_resource type="AudioStream" uid="uid://best1my0e8sif" path="res://assets/art/LabBGNoise - 8:1:25, 17.48.wav" id="15_4kayx"]
+[ext_resource type="Script" uid="uid://csyf6kbv3gwyl" path="res://scenes/audio_manager.gd" id="16_bmagv"]
+[ext_resource type="AudioStream" uid="uid://bgej15totnkfl" path="res://assets/art/ButtonPressSFX.wav" id="17_bmagv"]
 
 [sub_resource type="Animation" id="Animation_ww34r"]
 length = 0.001
@@ -291,7 +293,15 @@ stream = ExtResource("15_4kayx")
 volume_db = -40.252
 autoplay = true
 
+[node name="AudioManager" type="Node2D" parent="."]
+script = ExtResource("16_bmagv")
+
+[node name="ButtonPressSFXPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("17_bmagv")
+volume_db = -13.712
+
 [connection signal="loops_changed" from="Hamster_Wheel" to="Shop" method="loops_changed"]
 [connection signal="loops_changed" from="Hamster_Wheel" to="Stats GUI/loops" method="_on_new_float"]
 [connection signal="lps_changed" from="Hamster_Wheel" to="Stats GUI/lps" method="_on_new_float"]
+[connection signal="button_pressed" from="Shop" to="AudioManager" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Button" to="Hamster_Wheel" method="_debug_add1"]
