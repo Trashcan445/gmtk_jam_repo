@@ -34,7 +34,7 @@ offset_top = -2.0
 offset_right = 157.0
 offset_bottom = 89.0
 scale = Vector2(0.162558, 0.162558)
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 81
 text = "+0.10 LPS"
 
 [node name="lvl" type="Label" parent="."]

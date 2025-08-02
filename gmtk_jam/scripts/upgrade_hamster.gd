@@ -7,6 +7,7 @@ class_name Upgrade
 @export var increase_type : INCREASE_TYPE = INCREASE_TYPE.Loops_Per_Second
 @export var cost : float = 1
 @export var cost_increase : float = 1
+@export var cost_increase_mult : float = 1
 @export var lps_to_unlock : float = 0.0
 var currentLevel : int = 0
 

@@ -30,7 +30,7 @@ func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
 	
 	hamster_wheel.loops -= upgrade_purchase.cost
 	upgrade_purchase.cost += upgrade_purchase.cost_increase
-	upgrade_purchase.cost_increase = upgrade_purchase.cost_increase * 1.5
+	upgrade_purchase.cost_increase = upgrade_purchase.cost_increase * upgrade_purchase.cost_increase_mult
 	upgrade_purchase.currentLevel += 1
 	
 	calc_lps()

@@ -179,6 +179,8 @@ scale = Vector2(1.54479, 1)
 texture = ExtResource("8_jafe7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(26.81, -17.58)
+zoom = Vector2(1.22, 1.22)
 
 [node name="Hamster_Wheel" type="Node2D" parent="." node_paths=PackedStringArray("animplayer")]
 position = Vector2(-234.79, 0)

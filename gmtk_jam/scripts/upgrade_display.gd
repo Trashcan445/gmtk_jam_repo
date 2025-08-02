@@ -18,7 +18,10 @@ func init_display(upgradeInfo : Upgrade, _visible : bool = true) -> void:
 	else:
 		levelDisplay.text = "Lv. " + str(info.currentLevel)
 	
-	button.text = str(info.cost)
+	if info.cost > 1:
+		button.text = str(info.cost)
+	else:
+		button.text = "Loops Cost: 1"
 	
 	visible = _visible
 	
