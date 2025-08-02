@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://best1my0e8sif"
+path="res://.godot/imported/LabBGNoise - 8:1:25, 17.48.wav-1da8cac94d66cd0cecd60db953245432.sample"
+
+[deps]
+
+source_file="res://assets/art/LabBGNoise - 8:1:25, 17.48.wav"
+dest_files=["res://.godot/imported/LabBGNoise - 8:1:25, 17.48.wav-1da8cac94d66cd0cecd60db953245432.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-100000
+compress/mode=2

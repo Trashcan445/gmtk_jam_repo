@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://2sfk3xjnfbfl"]
+[gd_scene load_steps=25 format=3 uid="uid://2sfk3xjnfbfl"]
 
 [ext_resource type="Script" uid="uid://1rlitx3kfnc0" path="res://scripts/hamster_wheel.gd" id="1_70i32"]
 [ext_resource type="Texture2D" uid="uid://c3np3xbbtnosg" path="res://assets/art/wheel.png" id="1_wat2s"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://chmykggsovn5k" path="res://assets/art/brooke-balentine-tLI5KpfTC2s-unsplash.jpg" id="7_w8d8m"]
 [ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
 [ext_resource type="Texture2D" uid="uid://bumi7bxvyb6ur" path="res://assets/art/sunglasses.png" id="11_5rqni"]
+[ext_resource type="AudioStream" uid="uid://best1my0e8sif" path="res://assets/art/LabBGNoise - 8:1:25, 17.48.wav" id="15_4kayx"]
 
 [sub_resource type="Animation" id="Animation_ww34r"]
 length = 0.001
@@ -284,6 +285,11 @@ offset_top = 233.0
 offset_right = 437.0
 offset_bottom = 395.0
 text = "add 100 loops"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_4kayx")
+volume_db = -40.252
+autoplay = true
 
 [connection signal="loops_changed" from="Hamster_Wheel" to="Shop" method="loops_changed"]
 [connection signal="loops_changed" from="Hamster_Wheel" to="Stats GUI/loops" method="_on_new_float"]
