@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://chmykggsovn5k" path="res://assets/art/brooke-balentine-tLI5KpfTC2s-unsplash.jpg" id="7_w8d8m"]
 [ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
 [ext_resource type="Texture2D" uid="uid://bumi7bxvyb6ur" path="res://assets/art/sunglasses.png" id="11_5rqni"]
-[ext_resource type="AudioStream" uid="uid://best1my0e8sif" path="res://assets/art/LabBGNoise - 8:1:25, 17.48.wav" id="15_4kayx"]
+[ext_resource type="AudioStream" uid="uid://best1my0e8sif" path="res://assets/art/LabBGNoise.wav" id="15_4kayx"]
 [ext_resource type="Script" uid="uid://csyf6kbv3gwyl" path="res://scenes/audio_manager.gd" id="16_bmagv"]
 [ext_resource type="AudioStream" uid="uid://bgej15totnkfl" path="res://assets/art/ButtonPressSFX.wav" id="17_bmagv"]
 
