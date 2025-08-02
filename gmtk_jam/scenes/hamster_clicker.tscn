@@ -323,8 +323,10 @@ offset_right = 302.0
 offset_bottom = 36.0
 text = "uninitialized LOOPS"
 script = ExtResource("5_qmgou")
+suffix = " Loops"
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = 75.0
 offset_top = 233.0
 offset_right = 437.0
