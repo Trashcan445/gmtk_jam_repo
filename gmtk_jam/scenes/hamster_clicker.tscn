@@ -1,15 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://2sfk3xjnfbfl"]
+[gd_scene load_steps=24 format=3 uid="uid://2sfk3xjnfbfl"]
 
 [ext_resource type="Script" uid="uid://1rlitx3kfnc0" path="res://scripts/hamster_wheel.gd" id="1_70i32"]
 [ext_resource type="Texture2D" uid="uid://c3np3xbbtnosg" path="res://assets/art/wheel.png" id="1_wat2s"]
 [ext_resource type="Texture2D" uid="uid://b1syc4748sy2t" path="res://assets/art/Hamster.png" id="2_70i32"]
 [ext_resource type="Texture2D" uid="uid://dt8th7o3u2bfi" path="res://assets/art/wheelBar.png" id="3_qmgou"]
+[ext_resource type="Texture2D" uid="uid://dydgr4a27gitc" path="res://assets/art/butter.png" id="4_wogv3"]
 [ext_resource type="Script" uid="uid://d4mfuh4tqigep" path="res://scripts/hamster_visual_manager.gd" id="5_pbigs"]
 [ext_resource type="Script" uid="uid://da6qw3ijsx8gs" path="res://scripts/display_string_in_label.gd" id="5_qmgou"]
 [ext_resource type="Script" uid="uid://y5nku40kimi1" path="res://scripts/hamster_visual.gd" id="6_5rqni"]
 [ext_resource type="PackedScene" uid="uid://bmbbycprlxm23" path="res://scenes/shop.tscn" id="6_aeqvs"]
+[ext_resource type="Texture2D" uid="uid://bp318ncx0wcti" path="res://assets/art/apple watch.png" id="6_wr5mj"]
+[ext_resource type="Texture2D" uid="uid://wu2y6rpcc384" path="res://assets/art/running shoe.png" id="7_opkp5"]
 [ext_resource type="Texture2D" uid="uid://chmykggsovn5k" path="res://assets/art/brooke-balentine-tLI5KpfTC2s-unsplash.jpg" id="7_w8d8m"]
 [ext_resource type="Texture2D" uid="uid://biff285lvvns1" path="res://assets/art/Lab Table.png" id="8_jafe7"]
+[ext_resource type="Texture2D" uid="uid://bumi7bxvyb6ur" path="res://assets/art/sunglasses.png" id="11_5rqni"]
 
 [sub_resource type="Animation" id="Animation_ww34r"]
 length = 0.001
@@ -98,15 +102,43 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_pbigs"]
 script = ExtResource("6_5rqni")
-sprites = Array[NodePath]([NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Hamster2")])
+sprites = Array[NodePath]([NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/RunningShoe"), NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/RunningShoe2"), NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/RunningShoe3"), NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/RunningShoe4")])
 useCustomHamsterColor = false
 customHamsterColor = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://y5nku40kimi1"
 
 [sub_resource type="Resource" id="Resource_5rqni"]
 script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/AppleWatch")])
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_wogv3"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Sunglasses")])
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_4kayx"]
+script = ExtResource("6_5rqni")
 sprites = Array[NodePath]([])
-useCustomHamsterColor = true
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_eg4t8"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([NodePath("../Butter")])
+useCustomHamsterColor = false
+customHamsterColor = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://y5nku40kimi1"
+
+[sub_resource type="Resource" id="Resource_bmagv"]
+script = ExtResource("6_5rqni")
+sprites = Array[NodePath]([])
+useCustomHamsterColor = false
 customHamsterColor = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://y5nku40kimi1"
 
@@ -135,6 +167,13 @@ animplayer = NodePath("AnimationPlayer")
 loopAnimationName = "hamster_loop"
 loopsPerSecond = 0.1
 
+[node name="Butter" type="Sprite2D" parent="Hamster_Wheel"]
+visible = false
+position = Vector2(260.79, -141)
+rotation = -0.477292
+scale = Vector2(1.05469, 0.957031)
+texture = ExtResource("4_wogv3")
+
 [node name="Wheel_AnimatedPivot" type="Node2D" parent="Hamster_Wheel"]
 
 [node name="Wheel" type="Sprite2D" parent="Hamster_Wheel/Wheel_AnimatedPivot"]
@@ -149,14 +188,54 @@ scale = Vector2(0.872093, 0.872093)
 position = Vector2(6.88, 36.9674)
 scale = Vector2(0.872093, 0.872093)
 
-[node name="Hamster2" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
-visible = false
-position = Vector2(-64.7035, 1.31482)
-scale = Vector2(1.0044, 1.11156)
-texture = ExtResource("2_70i32")
-
 [node name="Hamster" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
 texture = ExtResource("2_70i32")
+
+[node name="AppleWatch" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+position = Vector2(33.6987, -11.2572)
+rotation = -0.46872
+scale = Vector2(0.315518, 0.315518)
+texture = ExtResource("6_wr5mj")
+flip_h = true
+
+[node name="RunningShoe3" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+modulate = Color(0.95158, 0.95158, 0.95158, 1)
+position = Vector2(-44.9808, 43.3898)
+rotation = -0.257516
+scale = Vector2(0.210648, 0.202288)
+texture = ExtResource("7_opkp5")
+
+[node name="RunningShoe4" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+position = Vector2(-81.1681, 45.1816)
+rotation = 0.716341
+scale = Vector2(0.219355, 0.228112)
+texture = ExtResource("7_opkp5")
+
+[node name="RunningShoe2" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+position = Vector2(4.98325, 59.168)
+rotation = 0.0926152
+scale = Vector2(0.221747, 0.221747)
+texture = ExtResource("7_opkp5")
+
+[node name="RunningShoe" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+modulate = Color(0.93408, 0.93408, 0.93408, 1)
+position = Vector2(75.9849, 35.5008)
+rotation = -0.473641
+scale = Vector2(0.22265, 0.22265)
+texture = ExtResource("7_opkp5")
+
+[node name="Sunglasses" type="Sprite2D" parent="Hamster_Wheel/Hamster_AnimatedPivot/Hamster_FreePivot"]
+visible = false
+position = Vector2(69.4106, -30.2414)
+rotation = -0.122325
+scale = Vector2(0.28933, 0.37927)
+texture = ExtResource("11_5rqni")
+flip_h = true
 
 [node name="Bar_AnimatedPivot" type="Node2D" parent="Hamster_Wheel"]
 
@@ -172,7 +251,7 @@ speed_scale = 0.2
 
 [node name="HamsterVisualManager" type="Node2D" parent="Hamster_Wheel" node_paths=PackedStringArray("hamsterSprite")]
 script = ExtResource("5_pbigs")
-visuals = Array[ExtResource("6_5rqni")]([SubResource("Resource_pbigs"), SubResource("Resource_5rqni")])
+visuals = Array[ExtResource("6_5rqni")]([SubResource("Resource_pbigs"), SubResource("Resource_5rqni"), SubResource("Resource_wogv3"), SubResource("Resource_4kayx"), SubResource("Resource_eg4t8"), SubResource("Resource_bmagv")])
 hamsterSprite = NodePath("../Hamster_AnimatedPivot/Hamster_FreePivot/Hamster")
 metadata/_custom_type_script = "uid://d4mfuh4tqigep"
 

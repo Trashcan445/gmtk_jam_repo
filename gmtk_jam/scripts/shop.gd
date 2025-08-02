@@ -24,18 +24,16 @@ func loops_changed(new_loops : float):
 # upgrade, called from button signal, increases lps, or lps mult
 # the buttons themselves will increase their level
 func _on_upgrade_node_purchased(upgrade_purchase : Upgrade):
+	hamster_vis.enable_visual(upgrades.find(upgrade_purchase), upgrade_purchase.currentLevel, true)# enable funny visual
+	
 	hamster_wheel.loops -= upgrade_purchase.cost
 	upgrade_purchase.cost += upgrade_purchase.cost_increase
-	upgrade_purchase.cost_increase = upgrade_purchase.cost_increase * 1.2
+	upgrade_purchase.cost_increase = upgrade_purchase.cost_increase * 1.5
 	upgrade_purchase.currentLevel += 1
 	
 	calc_lps()
 		
-	# unlock new upgrades from lps
-	init_all()
-		
-	# enable funny visual
-	hamster_vis.enable_visual(upgrades.find(upgrade_purchase), upgrade_purchase.currentLevel, true)
+	init_all()# unlock new upgrades from lps
 
 func init_all():
 	for i in upgradeDisplays.size():
@@ -50,7 +48,7 @@ func calc_lps():
 		if upgrade.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second_Mult:
 			if upgrade.currentLevel > 0:
 				lpsMlp *= pow(upgrade.increase, upgrade.currentLevel)
-			upgradeDisplays[i].lps_changed(0)
+			upgradeDisplays[i].lps_changed(0, lpsMlp)
 				
 	for i in range(upgrades.size()):
 		var upgrade = upgrades[i]
@@ -58,8 +56,8 @@ func calc_lps():
 			if upgrade.currentLevel > 0:
 				var lpsFromThisUpgrade = upgrade.increase * lpsMlp * upgrade.currentLevel
 				totalLPS += lpsFromThisUpgrade
-				upgradeDisplays[i].lps_changed(lpsFromThisUpgrade)
+				upgradeDisplays[i].lps_changed(lpsFromThisUpgrade, lpsMlp)
 			else:
-				upgradeDisplays[i].lps_changed(0)
+				upgradeDisplays[i].lps_changed(0, lpsMlp)
 			
 	hamster_wheel.loopsPerSecond = totalLPS

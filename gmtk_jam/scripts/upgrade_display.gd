@@ -29,8 +29,9 @@ func purchase_upgrade() -> void:
 	purchased.emit(info) # This tells shop to subtract the cost from loops
 	init_display(info)
 	
-func lps_changed(lps : float) -> void:
+func lps_changed(myLPS : float, lpsMlp : float) -> void:
 	if info.increase_type == Upgrade.INCREASE_TYPE.Loops_Per_Second:
-		descDisplay.text = "+" + String.num(info.increase, 2) + " LPS" + " (Total: " + String.num(lps, 2) + ")"
+		var inc = String.num(info.increase * lpsMlp, 2)
+		descDisplay.text = "+" + inc + " LPS" + " (Total: " + String.num(myLPS, 2) + ")"
 	else:
-		descDisplay.text = "+" + str(int(info.increase*100)) + "% LPS"
+		descDisplay.text = "+" + str((int(info.increase*100)) - 100) + "% LPS"

@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_2fc2m"]
 script = ExtResource("2_1l46r")
-name = "2 more legs"
+name = "Apple Watch"
 increase = 0.8
 increase_type = 0
 cost = 10.0
@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_8r1wq"]
 script = ExtResource("2_1l46r")
-name = "Bionic Eye"
+name = "Big Sunglasses"
 increase = 51.2
 increase_type = 0
 cost = 500.0
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://dp7ti5a83t8p8"
 
 [sub_resource type="Resource" id="Resource_1l46r"]
 script = ExtResource("2_1l46r")
-name = "Hulk Juice"
+name = "Camelback"
 increase = 3276.8
 increase_type = 0
 cost = 25000.0
